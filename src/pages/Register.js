@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import Random from '@mobylogix/node-random';
 import PropTypes from 'prop-types';
 import {_} from 'underscore';
 import moment from 'moment';
@@ -9,6 +10,7 @@ import {
   TextField,
   Button,
 } from 'material-ui';
+import 'whatwg-fetch';
 
 import '../stylesheets/authorization.css';
 import stylesJs from '../stylesheets/StyleJs.js';
@@ -18,7 +20,9 @@ class Register extends PureComponent {
     super(props);
 
     this.state = {
-
+      name: '',
+      email: '',
+      password: '',
     };
 
     this._isMounted = null;
@@ -45,6 +49,25 @@ class Register extends PureComponent {
       return;
     }
 
+    let data = {
+      _id: Random.id(),
+      name,
+      email,
+      password,
+    };
+
+    fetch('http://localhost:3002/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(result => result.json())
+    .then((res) => {
+      console.log(res)
+    })
+    .catch(err => console.log(err))
 
 
   }
@@ -84,7 +107,7 @@ class Register extends PureComponent {
           <Button
             raised
             color="accent"
-            onClick={() => this.register }
+            onClick={() => this.register() }
           >
             Submit
           </Button>
