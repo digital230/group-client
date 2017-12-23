@@ -14,7 +14,7 @@ export default class Layout extends PureComponent {
 
     return (
       <div>
-      {component}
+        {component}
       </div>
     );
   }

@@ -3,7 +3,9 @@ import { SocketProvider } from 'socket.io-react';
 import io from 'socket.io-client';
 import { Switch, Route, withRouter } from 'react-router-dom';
 
-import Routes from './group/Routes';
+import Routes from './Routes';
+import Login from './pages/Login';
+import Register from './pages/Register.js';
 
 const routes = [...Routes];
 
@@ -11,6 +13,18 @@ const routes = [...Routes];
 const App = () => {
   return (
     <Switch>
+      <Route
+        path="/login"
+        exact
+        component={Login}
+      />
+
+      <Route
+        path="/register"
+        exact
+        component={Register}
+      />
+
       {routes.map((r, i) => {
         return (
           <Route

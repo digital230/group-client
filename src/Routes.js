@@ -1,6 +1,5 @@
-import Layout from './Layout';
-import Home from './Home';
-
+import Layout from './layouts/Layout';
+import Home from './pages/Home';
 const PATH = '/';
 
 export default [
