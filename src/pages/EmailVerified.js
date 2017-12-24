@@ -48,7 +48,6 @@ class EmailVerified extends PureComponent {
     }
 
     let decryptToken = jwt.verify(token, '6A586E327235753878214125442A472D');
-    console.log(decryptToken)
 
     fetch('http://localhost:3002/emailVerification', {
       method: 'POST',
@@ -61,8 +60,8 @@ class EmailVerified extends PureComponent {
     .then(({error, data}) => {
       if (error) {
         // history.push('/register');
-      } else {
         console.log(data)
+      } else {
         if (data.verified === true) {
           setTimeout(() => {
             this.setState({str: 'redirecting', loading: false})
