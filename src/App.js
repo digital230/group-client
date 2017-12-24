@@ -25,6 +25,7 @@ const App = () => {
         component={Register}
       />
 
+
       {routes.map((r, i) => {
         return (
           <Route

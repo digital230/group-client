@@ -2,5 +2,13 @@ export default {
   textField: {
     width: '100%',
   },
+  card: {
+    width: '25%'
+  },
+  iconDone: {
+    width: 48,
+    height: 48,
+    fill: 'rgb(91, 224, 8)'
+  }
 
 }

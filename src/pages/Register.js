@@ -23,6 +23,7 @@ class Register extends PureComponent {
       name: '',
       email: '',
       password: '',
+      alreadyPresent: false,
     };
 
     this._isMounted = null;
@@ -65,7 +66,11 @@ class Register extends PureComponent {
     })
     .then(result => result.json())
     .then((res) => {
-      console.log(res)
+      if (res && res.alreadyPresent === true) {
+        this.setState({alreadyPresent: true})
+      } else {
+        this.setState({emailSent: true, alreadyPresent: false})
+      }
     })
     .catch(err => console.log(err))
 
@@ -74,10 +79,15 @@ class Register extends PureComponent {
 
   render() {
     const {classes} = this.props;
-
+    const {alreadyPresent, emailSent} = this.state;
 
     return (
       <div className="container">
+        {emailSent &&
+          <div className="email-sent">
+            <p>An email sent to you please verify your email address!!</p>
+          </div>
+        }
         <div className="login-body">
           <TextField
             id="name"
@@ -111,6 +121,12 @@ class Register extends PureComponent {
           >
             Submit
           </Button>
+
+          {alreadyPresent &&
+            <div className="not-found">
+              <a href="/login">Accout is alreay present please login</a>
+            </div>
+          }
         </div>
       </div>
     );

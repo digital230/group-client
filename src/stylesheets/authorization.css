@@ -13,3 +13,29 @@
   justify-content: center;
   align-items: center;
 }
+
+.card-loader {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+
+.loader-main {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader{
+  width: 16%;
+}
+
+.loading-text {
+  width: 70%;
+  text-align: center;
+}

@@ -21,6 +21,8 @@ class Login extends PureComponent {
     this.state = {
       email: '',
       password: '',
+      emailSent: false,
+      notFound: false,
     };
 
     this._isMounted = null;
@@ -41,20 +43,45 @@ class Login extends PureComponent {
   }
 
   login() {
+    const {history} = this.props;
     const {email, password} = this.state;
 
     if (email === '' || password === '') {
       return;
     }
 
-    //login hete
+    fetch('http://localhost:3002/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({email, password})
+    })
+    .then(res => res.json())
+    .then(({error, data, verified}) => {
+      if (error) {
+        history.push('/register')
+      } else if (!error && verified === true) {
+        history.push('/');
+      } else if (!error && verified === false) {
+        this.setState({emailSent: true, notFound: false});
+      } else {
+        this.setState({notFound: true, emailSent: false});
+      }
+    })
   }
 
   render() {
     const {classes} = this.props;
+    const {emailSent, notFound} = this.state;
 
     return (
       <div className="container">
+        {emailSent &&
+          <div className="email-sent">
+            <p>An email sent to you please verify your email address!!</p>
+          </div>
+        }
         <div className="login-body">
           <TextField
             id="email"
@@ -76,10 +103,16 @@ class Login extends PureComponent {
           <Button
             raised
             color="accent"
-            onClick={() => this.login }
+            onClick={() => this.login() }
           >
             Login
           </Button>
+
+          {notFound &&
+            <div className="not-found">
+              <a href="/register">No User found please create account first</a>
+            </div>
+          }
         </div>
       </div>
     );
