@@ -12,6 +12,7 @@ import {
 } from 'material-ui';
 import 'whatwg-fetch';
 
+import helpers from '../utils/Helper';
 import '../stylesheets/authorization.css';
 import stylesJs from '../stylesheets/StyleJs.js';
 
@@ -33,6 +34,14 @@ class Register extends PureComponent {
 
   componentDidMount() {
     this._isMounted = true;
+  }
+
+  componentWillMount() {
+    const {history} = this.props;
+
+    if (helpers.alreadyLogedIn()) {
+      history.push('/');
+    }
   }
 
   componentWillUnmount() {

@@ -9,6 +9,10 @@ export default {
     width: 48,
     height: 48,
     fill: 'rgb(91, 224, 8)'
+  },
+  avatar: {
+    width: 38,
+    height: 38,
   }
 
 }
