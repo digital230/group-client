@@ -68,13 +68,21 @@ class Register extends PureComponent {
     .then((res) => {
       if (res && res.alreadyPresent === true) {
         this.setState({alreadyPresent: true})
+        this.resetState();
       } else {
         this.setState({emailSent: true, alreadyPresent: false})
+        this.resetState();
       }
     })
     .catch(err => console.log(err))
+  }
 
-
+  resetState(){
+    this.setState({
+      name: '',
+      email: '',
+      password: '',
+    });
   }
 
   render() {
