@@ -14,6 +14,9 @@ export default {
     width: 38,
     height: 38,
     fontSize: 13,
-  }
+  },
+  menu: {
+    top: '47px !important',
+  },
 
 }

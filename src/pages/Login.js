@@ -77,6 +77,7 @@ class Login extends PureComponent {
       if (error) {
         history.push('/register')
       } else if (!error && verified === true) {
+        helpers.setCookie(data)
         history.push('/');
       } else if (!error && verified === false) {
         this.setState({emailSent: true, notFound: false});

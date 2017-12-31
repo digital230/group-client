@@ -9,9 +9,9 @@ helpers.setCookie = (user) => {
   localStorage.setItem("token", user);
 }
 
-helpers.removeCookie = (user) => {
-  Cookie.remove('token', user);
-  localStorage.removeItem("token", user);
+helpers.removeCookie = () => {
+  Cookie.remove('token');
+  localStorage.removeItem("token");
 }
 
 helpers.alreadyLogedIn = () => {
