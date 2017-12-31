@@ -10,6 +10,8 @@ import {
   TextField,
   Button,
 } from 'material-ui';
+
+import helpers from '../utils/Helper.js';
 //
 import '../stylesheets/authorization.css';
 import stylesJs from '../stylesheets/StyleJs.js';
@@ -34,13 +36,26 @@ class Login extends PureComponent {
     this._isMounted = true;
   }
 
+  componentWillMount() {
+    const {history} = this.props;
+
+    if (helpers.alreadyLogedIn()) {
+      history.push('/');
+    }
+  }
+
   componentWillUnmount() {
+
     this._isMounted = false;
+
   }
 
   componentWillReceiveProps(props) {
 
   }
+
+
+
 
   login() {
     const {history} = this.props;
@@ -62,6 +77,7 @@ class Login extends PureComponent {
       if (error) {
         history.push('/register')
       } else if (!error && verified === true) {
+        helpers.setCookie(data)
         history.push('/');
       } else if (!error && verified === false) {
         this.setState({emailSent: true, notFound: false});
