@@ -13,6 +13,7 @@ export default {
   avatar: {
     width: 38,
     height: 38,
+    fontSize: 13,
   }
 
 }
