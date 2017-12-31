@@ -30,11 +30,12 @@ class Layout extends PureComponent {
 
 
   render() {
-    const {children} = this.props;
+    const {children, socket} = this.props;
     const {currentUser} = this.state;
 
     const component  = React.cloneElement(children, {
-      currentUser
+      currentUser,
+      socket,
     });
 
     if (!currentUser) {

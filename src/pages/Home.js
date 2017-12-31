@@ -1,4 +1,8 @@
 import React, {Component, PureComponent} from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { socketConnect } from 'socket.io-react';
+
+import SubHeader from '../components/SubHeader';
 
 class Home extends PureComponent {
   constructor(props) {
@@ -11,7 +15,10 @@ class Home extends PureComponent {
   render() {
 
     return (
-      <div>Home</div>
+      <div>
+      <SubHeader />
+      Home
+      </div>
     );
   }
 }

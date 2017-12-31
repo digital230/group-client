@@ -18,5 +18,8 @@ export default {
   menu: {
     top: '47px !important',
   },
+  button: {
+    backgroundColor: '#1cdb7b',
+  }
 
 }

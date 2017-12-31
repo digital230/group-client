@@ -60,8 +60,6 @@ class Header extends PureComponent {
   handleSeletcMenuItem(menuNumber) {
     const {history} = this.props;
 
-    console.log(helpers.getCurrentUser())
-
     if (menuNumber === 2) {
       helpers.removeCookie();
       history.push('/login');

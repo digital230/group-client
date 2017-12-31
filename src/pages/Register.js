@@ -6,11 +6,11 @@ import moment from 'moment';
 import autoBind from 'react-autobind';
 import { Link, withRouter } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
+import 'whatwg-fetch';
 import {
   TextField,
   Button,
 } from 'material-ui';
-import 'whatwg-fetch';
 
 import helpers from '../utils/Helper';
 import '../stylesheets/authorization.css';
