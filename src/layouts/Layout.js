@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import helpers from '../utils/Helper';
 import Loading from '../components/Loading';
+import MyDrawer from '../components/drawer/Drawer';
 import '../stylesheets/App.css';
 
 class Layout extends PureComponent {
@@ -13,6 +14,7 @@ class Layout extends PureComponent {
 
     this.state = {
       currentUser: undefined,
+      drawer: false,
     }
   }
 
@@ -28,10 +30,14 @@ class Layout extends PureComponent {
     }, 1000)
   }
 
+  handleDrawer = (state) => {
+    this.setState({drawer: state})
+  }
+
 
   render() {
     const {children, socket} = this.props;
-    const {currentUser} = this.state;
+    const {currentUser, drawer} = this.state;
 
     const component  = React.cloneElement(children, {
       currentUser,
@@ -46,9 +52,19 @@ class Layout extends PureComponent {
       <div className="main-layout-container">
         <Header
           currentUser={currentUser}
+          handleDrawer={this.handleDrawer}
+          drawer={drawer}
         />
         <div className="main-body">
-          {component}
+          <div className="drawer">
+            <MyDrawer
+              open={drawer}
+              handleDrawer={this.handleDrawer}
+            />
+          </div>
+          <div className="body-content">
+            {component}
+          </div>
         </div>
         <div className="main-footer">
           <Footer />

@@ -20,6 +20,9 @@ export default {
   },
   button: {
     backgroundColor: '#1cdb7b',
+  },
+  drawer: {
+    width: 300,
   }
 
 }

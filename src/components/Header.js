@@ -9,8 +9,13 @@ import { withStyles } from 'material-ui/styles';
 import {
   Avatar,
   Menu,
-  MenuItem
+  MenuItem,
+  IconButton
 } from 'material-ui';
+
+import {
+  Reorder
+ } from 'material-ui-icons';
 
 import MyAvatar from './MyAvatar';
 import jsStyles from '../stylesheets/StyleJs.js';
@@ -24,6 +29,7 @@ class Header extends PureComponent {
     this.state = {
       openMenu: false,
       anchorEl: undefined,
+      drawerState: props && props.drawer ? props.drawer : false,
     };
 
     this._isMounted = null;
@@ -40,7 +46,9 @@ class Header extends PureComponent {
   }
 
   componentWillReceiveProps(props) {
-
+    if (props) {
+      this.setState({drawerState: props.drawer});
+    }
   }
 
   openMenu(e) {
@@ -67,9 +75,14 @@ class Header extends PureComponent {
     }
   }
 
+  handleDrawer = () => {
+    const {handleDrawer} = this.props;
+    handleDrawer(!this.state.drawerState);
+  }
+
   render() {
-    const {classes, currentUser} = this.props;
-    const {openMenu, anchorEl} = this.state;
+    const {classes, currentUser, handleDrawer} = this.props;
+    const {openMenu, anchorEl, drawerState} = this.state;
 
     let hasProfilePic = currentUser && currentUser.profile ? currentUser.profile.avatarUrl : undefined;
 
@@ -77,6 +90,11 @@ class Header extends PureComponent {
     return (
       <div className="header-container">
         <div className="header-leftside">
+          <IconButton
+            onClick={this.handleDrawer}
+          >
+            <Reorder />
+          </IconButton>
           <div className="logo">
 
           </div>
