@@ -20,6 +20,18 @@ export default {
   },
   button: {
     backgroundColor: '#1cdb7b',
+  },
+  drawer: {
+    width: 300,
+  },
+  modal : {
+    width: '100%',
+  },
+  marginBottom: {
+    marginBottom: 25,
+  },
+  textFieldDate: {
+    width: '45%',
   }
 
 }

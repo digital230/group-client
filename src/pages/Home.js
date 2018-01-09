@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { socketConnect } from 'socket.io-react';
 
 import SubHeader from '../components/SubHeader';
+import New from './event/new/New';
 
 class Home extends PureComponent {
   constructor(props) {
@@ -16,7 +17,9 @@ class Home extends PureComponent {
 
     return (
       <div>
-      <SubHeader />
+      <SubHeader>
+        <New/>
+      </SubHeader>
       Home
       </div>
     );

@@ -10,9 +10,7 @@ import { withStyles } from 'material-ui/styles';
 import {
   Button
 } from 'material-ui';
-import {
 
-} from 'material-ui/SvgIcon';
 
 import JsStyles from '../stylesheets/StyleJs.js';
 import '../stylesheets/subHeader.css';
@@ -22,7 +20,7 @@ class SubHeader extends PureComponent {
     super(props);
 
     this.state = {
-
+      newEventModal: false,
     };
 
     this._isMounted = null;
@@ -42,19 +40,35 @@ class SubHeader extends PureComponent {
 
   }
 
+  handleModal = () => {
+    const {newEventModal} = this.state;
+    this.setState({newEventModal: !newEventModal});
+  }
+
   render() {
-    const {classes} = this.props;
+    const {classes, children} = this.props;
+
+    let newEvent = React.cloneElement(children, {
+      open: this.state.newEventModal,
+      handleModal: this.handleModal,
+    })
 
     return (
       <div className="subHeader-container">
         <div className="left-side">
-          <Button className={classes.button} raised>
+          <Button
+            className={classes.button}
+            raised
+            onClick={this.handleModal}
+          >
             New Event
           </Button>
         </div>
         <div className="right-side">
 
         </div>
+
+        {newEvent}
       </div>
     );
   }
