@@ -18,9 +18,7 @@ class Home extends PureComponent {
     return (
       <div>
       <SubHeader>
-        <New
-
-        />
+        <New/>
       </SubHeader>
       Home
       </div>

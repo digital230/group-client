@@ -10,9 +10,7 @@ import { withStyles } from 'material-ui/styles';
 import {
   Button
 } from 'material-ui';
-import {
 
-} from 'material-ui/SvgIcon';
 
 import JsStyles from '../stylesheets/StyleJs.js';
 import '../stylesheets/subHeader.css';

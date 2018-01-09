@@ -37,3 +37,7 @@
 .body-content {
 
 }
+
+.hider {
+  visibility: hidden;
+}
