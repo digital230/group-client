@@ -49,7 +49,7 @@ class EmailVerified extends PureComponent {
 
     let decryptToken = jwt.verify(token, '6A586E327235753878214125442A472D');
 
-    fetch('http://localhost:3002/emailVerification', {
+    fetch(`http://${process.env.REACT_APP_SOCKET_URL}/emailVerification`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

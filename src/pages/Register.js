@@ -66,7 +66,7 @@ class Register extends PureComponent {
       password,
     };
 
-    fetch('http://localhost:3002/register', {
+    fetch(`http://${process.env.REACT_APP_SOCKET_URL}/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
