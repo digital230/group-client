@@ -65,7 +65,7 @@ class Login extends PureComponent {
       return;
     }
 
-    fetch('http://localhost:3002/login', {
+    fetch(`http://${process.env.REACT_APP_SOCKET_URL}/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
